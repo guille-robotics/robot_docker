@@ -1,0 +1,15 @@
+services:
+  robot_rl:
+    build: .
+    container_name: ros2_rl_container
+    network_mode: "host"
+    privileged: true
+    volumes:
+      - ./ros2_ws:/workspace
+    devices:
+      - /dev/video0:/dev/video0
+    environment:
+      - ROS_DOMAIN_ID=0
+    stdin_open: true
+    tty: true
+    command: bash -c "source /opt/ros/humble/setup.bash && tail -f /dev/null"
