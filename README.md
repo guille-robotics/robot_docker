@@ -22,6 +22,12 @@ Para desarrollar cómodamente sin conectar un monitor a la Raspberry Pi, utiliza
 6. Selecciona el sistema operativo **Linux** e ingresa la contraseña de tu usuario cuando se solicite.
 7. Una vez conectado, ve al menú **File > Open Folder...** y escribe la ruta exacta del proyecto: `/home/robotpilot/robot_docker`.
 
+
+### Darle Permiso al vsCode para escribir
+```bash
+sudo chown -R $USER:$USER ~/robot_docker/ros2_ws
+```
+
 ---
 
 ## 🐳 2. Uso del Entorno Docker (ROS 2)
@@ -60,3 +66,4 @@ Cuando termines de trabajar y quieras liberar la memoria RAM de la Raspberry Pi:
 ```bash
 docker compose down
 ```
+
