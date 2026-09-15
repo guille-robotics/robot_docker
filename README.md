@@ -33,3 +33,16 @@ Abre una terminal integrada en VS Code (`Ctrl + ñ` o `Terminal > New Terminal`)
 ```bash
 # Construye y levanta el contenedor en segundo plano
 docker compose up -d --build
+
+### Entrar al espacio de trabajo
+
+Para ejecutar comandos de ROS 2 o compilar tu código, debes entrar al contenedor:
+
+```bash
+# Abre una terminal interactiva dentro del entorno ROS 2
+docker compose exec robot_rl bash
+
+Una vez dentro, tu consola cambiará. Estarás ubicado en la carpeta /workspace, la cual está sincronizada en tiempo real con la carpeta local ros2_ws/.
+
+
+
