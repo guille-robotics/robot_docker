@@ -33,16 +33,27 @@ Abre una terminal integrada en VS Code (`Ctrl + ñ` o `Terminal > New Terminal`)
 ```bash
 # Construye y levanta el contenedor en segundo plano
 docker compose up -d --build
+```
+*Nota: Si no agregaste nuevo hardware en el `docker-compose.yml`, puedes omitir `--build` para que inicie instantáneamente.*
 
 ### Entrar al espacio de trabajo
-
 Para ejecutar comandos de ROS 2 o compilar tu código, debes entrar al contenedor:
-
 ```bash
 # Abre una terminal interactiva dentro del entorno ROS 2
 docker compose exec robot_rl bash
+```
+Una vez dentro, tu consola cambiará. Estarás ubicado en la carpeta `/workspace`, la cual está sincronizada en tiempo real con la carpeta local `ros2_ws/`.
 
-Una vez dentro, tu consola cambiará. Estarás ubicado en la carpeta /workspace, la cual está sincronizada en tiempo real con la carpeta local ros2_ws/.
+### Compilar el código
+Siempre que crees un paquete nuevo o modifiques archivos de configuración, compila desde la raíz del workspace (dentro del contenedor):
+```bash
+cd /workspace
+colcon build
+source install/setup.bash
+```
 
-
-
+### Apagar el entorno
+Cuando termines de trabajar y quieras liberar la memoria RAM de la Raspberry Pi:
+```bash
+docker compose down
+```
